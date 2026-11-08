@@ -51,7 +51,7 @@ export function Experience() {
                       </p>
                     </div>
                     {exp.period && (
-                      <span className="text-xs font-mono text-subtle bg-surface-2 px-3 py-1 rounded-full self-start whitespace-nowrap">
+                      <span className="text-sm font-hand text-subtle bg-surface-2 px-3 py-1 rounded-full self-start whitespace-nowrap">
                         {exp.period}
                       </span>
                     )}
@@ -79,7 +79,7 @@ export function Experience() {
                     {exp.stack.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-0.5 text-[10px] font-mono bg-surface-2 text-muted rounded-full border border-line"
+                        className="px-2 py-0.5 text-[13px] font-hand bg-surface-2 text-muted rounded-full border border-line"
                       >
                         {tech}
                       </span>

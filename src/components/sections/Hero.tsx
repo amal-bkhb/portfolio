@@ -17,7 +17,7 @@ import {
   SiSpringboot,
   SiWireshark,
 } from "@icons-pack/react-simple-icons";
-import { SocialIcon } from "@/components/ui/BrandIcons";
+import { SocialIcon, linkTarget } from "@/components/ui/BrandIcons";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
@@ -154,9 +154,7 @@ export function Hero() {
               <a
                 key={link.name}
                 href={link.url}
-                {...(link.icon === "Mail"
-                  ? {}
-                  : { target: "_blank", rel: "noopener noreferrer" })}
+                {...linkTarget(link.url)}
                 className="w-11 h-11 rounded-xl bg-surface-2 border border-line flex items-center justify-center text-fg hover:text-accent hover:border-accent/40 transition-colors"
                 aria-label={link.name}
                 title={link.name}
@@ -293,7 +291,7 @@ export function Hero() {
                 </p>
                 <p className="text-xs text-muted mt-0.5">{exp.title}</p>
                 {exp.period && (
-                  <p className="text-[11px] font-mono text-subtle mt-1">
+                  <p className="text-xs font-hand text-subtle mt-1">
                     {exp.period}
                   </p>
                 )}

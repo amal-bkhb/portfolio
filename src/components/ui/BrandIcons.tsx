@@ -1,4 +1,4 @@
-import { Mail } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import type { SocialLink } from "@/data/profile";
 
 interface IconProps {
@@ -45,5 +45,13 @@ export function SocialIcon({
 }) {
   if (icon === "Github") return <GithubIcon size={size} />;
   if (icon === "Linkedin") return <LinkedinIcon size={size} />;
+  if (icon === "Phone") return <Phone size={size} aria-hidden="true" />;
   return <Mail size={size} aria-hidden="true" />;
+}
+
+/** mailto: and tel: links open in place; web profiles open in a new tab. */
+export function linkTarget(url: string) {
+  return url.startsWith("http")
+    ? { target: "_blank", rel: "noopener noreferrer" }
+    : {};
 }

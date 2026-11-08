@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { profile } from "@/data/profile";
 import { navItems } from "@/data/navigation";
-import { SocialIcon } from "@/components/ui/BrandIcons";
+import { SocialIcon, linkTarget } from "@/components/ui/BrandIcons";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -49,9 +49,7 @@ export function Footer() {
                 <a
                   key={link.name}
                   href={link.url}
-                  {...(link.icon === "Mail"
-                    ? {}
-                    : { target: "_blank", rel: "noopener noreferrer" })}
+                  {...linkTarget(link.url)}
                   className="p-2 rounded-lg text-muted hover:text-accent hover:bg-surface-2 transition-colors"
                   aria-label={link.name}
                 >

@@ -54,7 +54,7 @@ export function Education() {
                         {edu.location}
                       </p>
                     </div>
-                    <span className="text-xs font-mono text-subtle bg-surface-2 px-3 py-1 rounded-full self-start whitespace-nowrap">
+                    <span className="text-sm font-hand text-subtle bg-surface-2 px-3 py-1 rounded-full self-start whitespace-nowrap">
                       {edu.period}
                     </span>
                   </div>

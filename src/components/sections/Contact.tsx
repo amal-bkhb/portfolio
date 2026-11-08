@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
-import { SocialIcon } from "@/components/ui/BrandIcons";
+import { SocialIcon, linkTarget } from "@/components/ui/BrandIcons";
 import { profile } from "@/data/profile";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
@@ -119,14 +119,12 @@ export function Contact() {
                   <a
                     key={link.name}
                     href={link.url}
-                    {...(link.icon === "Mail"
-                      ? {}
-                      : { target: "_blank", rel: "noopener noreferrer" })}
+                    {...linkTarget(link.url)}
                     className="flex items-center gap-3 text-sm text-muted hover:text-accent transition-colors"
                   >
                     <SocialIcon icon={link.icon} size={16} />
                     <span className="truncate">
-                      {link.icon === "Mail" ? profile.email : link.name}
+                      {link.label}
                     </span>
                   </a>
                 ))}

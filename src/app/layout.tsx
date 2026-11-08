@@ -98,7 +98,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       "Kubernetes",
       "Application Security",
     ],
-    sameAs: ["https://github.com/amal-bkhb"],
+    sameAs: [
+      "https://github.com/amal-bkhb",
+      "https://www.linkedin.com/in/amal-bakhouya-422bb5334/",
+    ],
   };
 
   return (

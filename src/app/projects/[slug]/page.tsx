@@ -73,12 +73,12 @@ export default async function ProjectPage(
         <div className="mb-10">
           <div className="flex flex-wrap items-center gap-3 mb-4">
             {project.inProgress && (
-              <span className="px-3 py-1 text-xs font-mono text-success bg-success/10 rounded-full border border-success/30">
+              <span className="px-3 py-1 text-sm font-hand text-success bg-success/10 rounded-full border border-success/30">
                 In progress
               </span>
             )}
             {project.reportAvailable && (
-              <span className="px-3 py-1 text-xs font-mono text-muted bg-surface-2 rounded-full border border-line flex items-center gap-1">
+              <span className="px-3 py-1 text-sm font-hand text-muted bg-surface-2 rounded-full border border-line flex items-center gap-1">
                 <FileText size={12} />
                 Report available
               </span>
@@ -124,7 +124,7 @@ export default async function ProjectPage(
             {project.techStack.map((tech) => (
               <span
                 key={tech}
-                className="px-3 py-1.5 text-xs font-mono bg-surface-2 text-muted rounded-lg border border-line hover:text-fg hover:border-line-strong transition-colors"
+                className="px-3 py-1.5 text-sm font-hand bg-surface-2 text-muted rounded-lg border border-line hover:text-fg hover:border-line-strong transition-colors"
               >
                 {tech}
               </span>

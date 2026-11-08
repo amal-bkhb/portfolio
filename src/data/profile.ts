@@ -1,7 +1,9 @@
 export interface SocialLink {
   name: string;
   url: string;
-  icon: "Github" | "Linkedin" | "Mail";
+  icon: "Github" | "Linkedin" | "Mail" | "Phone";
+  /** Text shown next to the icon in contact lists. */
+  label: string;
 }
 
 export interface Profile {
@@ -13,16 +15,18 @@ export interface Profile {
   status: string;
   currentlyLearning: string;
   email: string;
+  phone: string;
   linkedin: string;
   github: string;
   cvPath: string | null;
   socialLinks: SocialLink[];
 }
 
-// À COMPLÉTER: address shown publicly. Empty values are hidden on the site.
-const email = '';
-// À COMPLÉTER: full LinkedIn profile URL.
-const linkedin = '';
+// Shown publicly on the site. Empty values are hidden.
+const email = 'amalbakhouya.bh@gmail.com';
+const phone = '+212704163798';
+const phoneLabel = '+212 7 04 16 37 98';
+const linkedin = 'https://www.linkedin.com/in/amal-bakhouya-422bb5334/';
 const github = 'https://github.com/amal-bkhb';
 
 export const profile: Profile = {
@@ -40,13 +44,15 @@ export const profile: Profile = {
   status: 'Open to PFE internship',
   currentlyLearning: 'Terraform & AWS Security',
   email,
+  phone,
   linkedin,
   github,
   // À COMPLÉTER: add public/cv/Amal_Bakhouya_CV.pdf, then set this to '/cv/Amal_Bakhouya_CV.pdf'.
   cvPath: null,
   socialLinks: [
-    { name: 'GitHub', url: github, icon: 'Github' },
-    ...(linkedin ? [{ name: 'LinkedIn', url: linkedin, icon: 'Linkedin' as const }] : []),
-    ...(email ? [{ name: 'Email', url: `mailto:${email}`, icon: 'Mail' as const }] : [])
+    ...(email ? [{ name: 'Email', url: `mailto:${email}`, icon: 'Mail' as const, label: email }] : []),
+    ...(phone ? [{ name: 'Phone', url: `tel:${phone}`, icon: 'Phone' as const, label: phoneLabel }] : []),
+    ...(linkedin ? [{ name: 'LinkedIn', url: linkedin, icon: 'Linkedin' as const, label: 'LinkedIn' }] : []),
+    { name: 'GitHub', url: github, icon: 'Github', label: 'GitHub' }
   ]
 };

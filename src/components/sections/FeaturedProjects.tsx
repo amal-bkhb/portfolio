@@ -70,13 +70,13 @@ export function FeaturedProjects() {
                   {project.techStack.slice(0, 6).map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-0.5 text-[10px] font-mono bg-surface-2 text-muted rounded-full border border-line"
+                      className="px-2 py-0.5 text-[13px] font-hand bg-surface-2 text-muted rounded-full border border-line"
                     >
                       {tech}
                     </span>
                   ))}
                   {project.techStack.length > 6 && (
-                    <span className="px-2 py-0.5 text-[10px] font-mono text-muted">
+                    <span className="px-2 py-0.5 text-[13px] font-hand text-muted">
                       +{project.techStack.length - 6}
                     </span>
                   )}

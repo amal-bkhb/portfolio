@@ -340,42 +340,6 @@ export const projects: Project[] = [
       'SonarQube quality gate setup and vulnerability triage within continuous integration workflows',
       'Containerization best practices for automated build environments'
     ]
-  },
-  {
-    slug: 'sdn-microsegmentation',
-    title: 'SDN Micro-segmentation for Threat Response',
-    summary: 'Ongoing federated project exploring Software-Defined Networking micro-segmentation for dynamic threat response.',
-    description: 'Ongoing federated project investigating dynamic micro-segmentation techniques within Software-Defined Networks (SDN) to isolate compromised hosts and dynamically enforce security containment policies.',
-    featured: false,
-    techStack: [
-      'SDN',
-      'Network Security',
-      'Micro-segmentation',
-      'OpenFlow'
-    ],
-    github: null,
-    reportAvailable: false,
-    inProgress: true,
-    context: 'Ongoing federated academic research and engineering project studying dynamic threat response within software-defined network architectures.',
-    objectives: [
-      'Investigate programmable network controllers to enforce dynamic micro-segmentation rules',
-      'Isolate compromised workloads automatically upon detection of malicious behavior',
-      'Evaluate latency and containment effectiveness across simulated enterprise topologies'
-    ],
-    architecture: 'Software-Defined Network topology controlled via a centralized SDN controller communicating with OpenFlow-enabled switches to dynamically update flow tables based on security triggers.',
-    whatIBuilt: [
-      'Researched SDN micro-segmentation architectures and isolation rule specifications',
-      'Configured network simulation environments for flow inspection and dynamic rule push',
-      // À COMPLÉTER: implementation details as project progresses
-    ],
-    results: [
-      'Project currently in progress — initial architecture and control framework designed',
-      // À COMPLÉTER: measurable result
-    ],
-    learnings: [
-      'Decoupled control plane and data plane mechanics in Software-Defined Networking',
-      'Strategies for programmatic network quarantine and lateral movement mitigation'
-    ]
   }
 ];
 

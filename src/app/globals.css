@@ -5,8 +5,8 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
   --bg: #161616;
-  --surface: rgba(44, 44, 44, 0.72);
-  --surface-2: #1e1e1e;
+  --surface: rgba(255, 255, 255, 0.07);
+  --surface-2: rgba(255, 255, 255, 0.12);
   --fg: #f5f5f5;
   --muted: #a8a29e;
   --subtle: #8a8580;
@@ -17,15 +17,21 @@
   --line-strong: rgba(255, 255, 255, 0.16);
   --success: #22c55e;
   --doodle: rgba(255, 255, 255, 0.045);
-  --glow: rgba(247, 164, 64, 0.07);
-  --shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  --glass-tint: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.09));
+  --glass-edge: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.14));
+  --glass-shine: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  --orb-1: rgba(247, 140, 40, 0.12);
+  --orb-2: rgba(255, 196, 107, 0.06);
+  --orb-3: rgba(40, 150, 160, 0.1);
+  --orb-4: rgba(170, 60, 40, 0.08);
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
 }
 
 :root[data-theme="light"] {
   color-scheme: light;
   --bg: #f3efe8;
-  --surface: rgba(255, 255, 255, 0.78);
-  --surface-2: #ebe5db;
+  --surface: rgba(255, 255, 255, 0.4);
+  --surface-2: rgba(255, 255, 255, 0.5);
   --fg: #1c1917;
   --muted: #57534e;
   --subtle: #6b6560;
@@ -36,8 +42,14 @@
   --line-strong: rgba(28, 25, 23, 0.2);
   --success: #15803d;
   --doodle: rgba(28, 25, 23, 0.06);
-  --glow: rgba(217, 119, 6, 0.08);
-  --shadow: 0 10px 30px rgba(28, 25, 23, 0.08);
+  --glass-tint: linear-gradient(135deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.3) 55%, rgba(255, 255, 255, 0.5));
+  --glass-edge: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
+  --glass-shine: inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 0 rgba(28, 25, 23, 0.04);
+  --orb-1: rgba(251, 146, 60, 0.14);
+  --orb-2: rgba(253, 224, 71, 0.1);
+  --orb-3: rgba(45, 180, 190, 0.08);
+  --orb-4: rgba(234, 88, 12, 0.07);
+  --shadow: 0 12px 30px rgba(120, 80, 40, 0.12);
 }
 
 @theme inline {
@@ -101,8 +113,8 @@ body {
   transition: background-color 200ms ease, color 200ms ease;
 }
 
-/* Hand-drawn doodle pattern behind everything */
-body::before {
+/* Hand-drawn doodle pattern, drawn over the color orbs */
+body::after {
   content: "";
   position: fixed;
   inset: 0;
@@ -115,14 +127,32 @@ body::before {
     repeat;
 }
 
-/* Soft warm glow at the top of the page */
-body::after {
+/* Blurred color orbs behind the glass cards; they drift slowly */
+body::before {
   content: "";
   position: fixed;
-  inset: 0;
+  inset: -15%;
   pointer-events: none;
   z-index: 0;
-  background: radial-gradient(ellipse 60% 45% at 50% 30%, var(--glow), transparent 70%);
+  background:
+    radial-gradient(circle at 22% 28%, var(--orb-1), transparent 32%),
+    radial-gradient(circle at 78% 22%, var(--orb-2), transparent 30%),
+    radial-gradient(circle at 70% 72%, var(--orb-3), transparent 34%),
+    radial-gradient(circle at 28% 78%, var(--orb-4), transparent 32%);
+  filter: blur(40px);
+  animation: orb-drift 28s ease-in-out infinite alternate;
+}
+
+@keyframes orb-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(4%, -3%, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(-3%, 4%, 0) scale(1.02);
+  }
 }
 
 /* Ensure content is above the background. Kept in the base layer so utilities
@@ -153,20 +183,36 @@ body::after {
   }
 }
 
-/* Card base styles */
+/* Liquid glass card: translucent tint, strong backdrop blur, light-catching edge */
 .card-base {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+  position: relative;
+  background: var(--glass-tint);
+  border: 1px solid transparent;
+  border-radius: 24px;
+  box-shadow: var(--glass-shine), var(--shadow);
+  -webkit-backdrop-filter: blur(32px) saturate(140%);
+  backdrop-filter: blur(32px) saturate(140%);
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+/* Soft white rim around the frosted glass */
+.card-base::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--glass-edge);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .card-base:hover {
-  transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  transform: translateY(-3px);
+  box-shadow: var(--glass-shine), var(--shadow), 0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {

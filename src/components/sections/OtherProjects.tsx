@@ -44,7 +44,7 @@ export function OtherProjects() {
                 </h4>
                 <div className="flex items-center gap-2 flex-shrink-0">
                   {project.inProgress && (
-                    <span className="px-2 py-0.5 text-[10px] font-mono text-success bg-success/10 rounded-full border border-success/30">
+                    <span className="px-2 py-0.5 text-[13px] font-hand text-success bg-success/10 rounded-full border border-success/30">
                       In progress
                     </span>
                   )}
@@ -70,13 +70,13 @@ export function OtherProjects() {
                 {project.techStack.slice(0, 4).map((tech) => (
                   <span
                     key={tech}
-                    className="px-2 py-0.5 text-[10px] font-mono bg-surface-2 text-muted rounded-full"
+                    className="px-2 py-0.5 text-[13px] font-hand bg-surface-2 text-muted rounded-full"
                   >
                     {tech}
                   </span>
                 ))}
                 {project.techStack.length > 4 && (
-                  <span className="px-1 py-0.5 text-[10px] font-mono text-muted">
+                  <span className="px-1 py-0.5 text-[13px] font-hand text-muted">
                     +{project.techStack.length - 4}
                   </span>
                 )}
