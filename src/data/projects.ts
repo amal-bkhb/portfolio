@@ -359,7 +359,7 @@ export const projects: Project[] = [
     ],
     github: null, // À COMPLÉTER: repository URL
     reportAvailable: false,
-    inProgress: true,
+    inProgress: false,
     context: 'Personal project built to develop hands-on DevSecOps and Cloud Security skills, with IAM and identity federation at its core.',
     objectives: [
       'Deploy a serverless API (API Gateway, Lambda, DynamoDB) entirely through Terraform',
