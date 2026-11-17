@@ -340,6 +340,47 @@ export const projects: Project[] = [
       'SonarQube quality gate setup and vulnerability triage within continuous integration workflows',
       'Containerization best practices for automated build environments'
     ]
+  },
+  {
+    slug: 'aws-serverless-devsecops',
+    title: 'Secure Serverless Delivery on AWS — OIDC & Least-Privilege IAM',
+    summary: 'DevSecOps pipeline deploying a serverless API on AWS with Terraform and GitHub Actions, using OIDC instead of static keys and least-privilege IAM roles.',
+    description: 'A personal DevSecOps and Cloud Security project. The application itself is deliberately simple (a serverless to-do API); the focus is the delivery pipeline around it: infrastructure as code with Terraform, keyless authentication from GitHub Actions to AWS via OIDC, one least-privilege IAM role per Lambda function, and blocking security checks on every pull request.',
+    featured: false,
+    techStack: [
+      'AWS Lambda',
+      'API Gateway',
+      'DynamoDB',
+      'AWS IAM',
+      'OIDC',
+      'Terraform',
+      'GitHub Actions',
+      'LocalStack'
+    ],
+    github: null, // À COMPLÉTER: repository URL
+    reportAvailable: false,
+    inProgress: true,
+    context: 'Personal project built to develop hands-on DevSecOps and Cloud Security skills, with IAM and identity federation at its core.',
+    objectives: [
+      'Deploy a serverless API (API Gateway, Lambda, DynamoDB) entirely through Terraform',
+      'Authenticate GitHub Actions to AWS through OIDC federation, with no long-lived access keys stored anywhere',
+      'Apply least privilege: a dedicated IAM execution role per Lambda function, scoped to exact resource ARNs',
+      'Block non-compliant pull requests with automated security checks (secrets, SAST, dependencies, IaC)'
+    ],
+    architecture: 'Serverless API built on API Gateway, AWS Lambda and DynamoDB, defined in Terraform. Developed and tested locally on LocalStack, then deployed to AWS by a GitHub Actions workflow that assumes an IAM role through OIDC federation. Each Lambda function runs under its own narrowly scoped execution role.',
+    whatIBuilt: [
+      'Defined the serverless infrastructure (Lambda, DynamoDB, IAM roles) as Terraform code',
+      'Built and validated the stack locally on LocalStack before any cloud deployment'
+      // À COMPLÉTER au fil des phases : bootstrap AWS + OIDC, contrôles de sécurité sur les PR
+    ],
+    results: [
+      'Phase 1 completed: infrastructure validated locally on LocalStack'
+      // À COMPLÉTER une fois déployé sur AWS
+    ],
+    learnings: [
+      'AWS IAM design: execution roles, trust policies and least-privilege scoping',
+      'Local cloud emulation with LocalStack to iterate on infrastructure without cloud costs'
+    ]
   }
 ];
 

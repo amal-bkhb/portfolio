@@ -13,5 +13,12 @@ export const certifications: Certification[] = [
     date: 'February 2026',
     credlyUrl: '', // À COMPLÉTER: Credly verification link
     logo: 'cisco'
+  },
+  {
+    name: 'AWS Academy Graduate - Cloud Foundations',
+    issuer: 'Amazon Web Services (AWS Academy)',
+    date: 'November 2026',
+    credlyUrl: '', // À COMPLÉTER: lien Credly du badge AWS Academy
+    logo: 'aws'
   }
 ];
